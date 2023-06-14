@@ -12,17 +12,25 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ScheduleViewModel;
 
-namespace SchoolScheduleViaWebApi
+
+namespace ScheduleView
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow ( )
+        private IViewModelContainer _viewModel;
+
+
+        public MainWindow ( IViewModelContainer viewModel )
         {
             InitializeComponent ( );
+
+            this.Content = new LoginPage ( this , viewModel );
+            _viewModel = viewModel;
         }
     }
 }
